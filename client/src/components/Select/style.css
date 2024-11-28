@@ -1,0 +1,342 @@
+* {
+  user-select: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+.brd {
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, .1);
+}
+
+.select-box {
+  position: relative;
+  width: 100%;
+  height: 35px;
+}
+
+.select-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 35px;
+  padding: 0 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.options-view-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 40;
+}
+
+.selected-value {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.option,
+.label {
+  color: #2d3667;
+  font-size: 13px;
+}
+
+.opcion-select,
+.label-select {
+  color: #2d3667;
+  font-size: 14px;
+}
+
+.chevrons {
+  position: relative;
+  color: #d1dede;
+  z-index: 30;
+}
+
+.options-view-button:checked+.select-button .chevrons {
+  color: #2d3667;
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  z-index: 50;
+}
+
+.options-view-button:checked~.options {
+  border: 1px solid #e2eded;
+  border-color: #eaf1f1 #e4eded #dbe7e7 #e4eded;
+}
+
+.options-select {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e2eded;
+  border-color: #eaf1f1 #e4eded #dbe7e7 #e4eded;
+}
+
+.option {
+  position: relative;
+  transition: 0.3s ease all;
+  z-index: 2;
+}
+
+.label {
+  transition: 0.3s ease all;
+  display: none;
+  height: 35px;
+  padding: 0 14px;
+}
+
+.options-view-button:checked~.options .label {
+  display: flex;
+  align-items: center;
+}
+
+.label-select {
+  position: relative;
+  transition: 0.3s ease all;
+  display: flex;
+  height: 35px;
+  width: 120px;
+  align-items: center;
+  z-index: 50;
+}
+
+.label-select svg {
+  color: var(--blue);
+  height: 15px !important;
+  padding-right: 5px;
+  padding-left: 4px;
+}
+
+.option-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 35px;
+  transition: 0.3s ease all;
+  z-index: 1;
+  display: none;
+}
+
+.options-view-button:checked~.options .option-bg {
+  display: block;
+}
+
+.option-bg-select {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 35px;
+  transition: 0.3s ease all;
+  z-index: 1;
+  display: block;
+}
+
+.option:hover .label {
+  color: #fff;
+}
+
+.label-select:hover,
+.label-select:hover svg {
+  color: #fff;
+}
+
+.option:nth-child(1):hover~.option-bg {
+  top: 0;
+  background-color: var(--red);
+  border-radius: 8px 8px 0 0;
+}
+
+.label-select:nth-child(1):hover~.option-bg-select {
+  top: 0;
+  background-color: var(--blue);
+  border-radius: 8px 8px 0 0;
+}
+
+.option:nth-child(2):hover~.option-bg {
+  top: 35px;
+  background-color: var(--orange);
+}
+
+.label-select:nth-child(2):hover~.option-bg-select {
+  top: 35px;
+  background-color: var(--red);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.option:nth-child(3):hover~.option-bg {
+  top: 70px;
+  background-color: var(--blue);
+}
+
+.option:nth-child(4):hover~.option-bg {
+  top: 105px;
+  background-color: var(--red);
+}
+
+.option:nth-child(5):hover~.option-bg {
+  top: 140px;
+  background-color: var(--orange);
+
+}
+
+.option:nth-child(6):hover~.option-bg {
+  top: 175px;
+  background-color: var(--blue);
+  border-radius: 0 0 4px 4px;
+}
+
+.option:nth-child(7):hover~.option-bg {
+  top: 210px;
+  background-color: var(--red);
+  border-radius: 8px 8px 0 0;
+}
+
+.option:nth-child(8):hover~.option-bg {
+  top: 245px;
+  background-color: var(--orange);
+}
+
+.option:nth-child(9):hover~.option-bg {
+  top: 280px;
+  background-color: var(--blue);
+}
+
+.option:nth-child(10):hover~.option-bg {
+  top: 315px;
+  background-color: var(--red);
+}
+
+.option:nth-child(11):hover~.option-bg {
+  top: 350px;
+  background-color: var(--orange);
+
+}
+
+.option:nth-child(12):hover~.option-bg {
+  top: 385px;
+  background-color: var(--blue);
+  border-radius: 0 0 4px 4px;
+}
+
+.option:nth-child(13):hover~.option-bg {
+  top: 420px;
+  background-color: var(--red);
+  border-radius: 8px 8px 0 0;
+}
+
+.option:nth-child(14):hover~.option-bg {
+  top: 455px;
+  background-color: var(--orange);
+}
+
+.option:nth-child(15):hover~.option-bg {
+  top: 490px;
+  background-color: var(--blue);
+}
+
+.option:nth-child(16):hover~.option-bg {
+  top: 525px;
+  background-color: var(--red);
+}
+
+.option:nth-child(17):hover~.option-bg {
+  top: 560px;
+  background-color: var(--orange);
+
+}
+
+.option:nth-child(18):hover~.option-bg {
+  top: 595px;
+  background-color: var(--blue);
+  border-radius: 0 0 4px 4px;
+}
+
+.option:nth-child(19):hover~.option-bg {
+  top: 630px;
+  background-color: var(--red);
+  border-radius: 8px 8px 0 0;
+}
+
+.option:nth-child(20):hover~.option-bg {
+  top: 665px;
+  background-color: var(--orange);
+}
+
+.option:nth-child(21):hover~.option-bg {
+  top: 700px;
+  background-color: var(--blue);
+}
+
+.option:nth-child(22):hover~.option-bg {
+  top: 735px;
+  background-color: var(--red);
+}
+
+.option:nth-child(23):hover~.option-bg {
+  top: 770px;
+  background-color: var(--orange);
+
+}
+
+.option:nth-child(24):hover~.option-bg {
+  top: 805px;
+  background-color: var(--blue);
+  border-radius: 0 0 4px 4px;
+}
+
+.option:nth-child(25):hover~.option-bg {
+  top: 840px;
+  background-color: var(--red);
+}
+
+.option:nth-child(26):hover~.option-bg {
+  top: 875px;
+  background-color: var(--orange);
+
+}
+
+.option:nth-child(27):hover~.option-bg {
+  top: 910px;
+  background-color: var(--blue);
+  border-radius: 0 0 4px 4px;
+}
+
+.option:nth-child(28):hover~.option-bg {
+  top: 945px;
+  background-color: var(--red);
+}
+
+.option:nth-child(29):hover~.option-bg {
+  top: 980px;
+  background-color: var(--orange);
+
+}
+
+.option:nth-child(30):hover~.option-bg {
+  top: 1015px;
+  background-color: var(--blue);
+  border-radius: 0 0 4px 4px;
+}
+

@@ -1,0 +1,51 @@
+ @-webkit-keyframes text-focus-in {
+   0% {
+     -webkit-filter: blur(12px);
+     filter: blur(12px);
+     opacity: 0;
+   }
+
+   100% {
+     -webkit-filter: blur(0px);
+     filter: blur(0px);
+     opacity: 1;
+   }
+ }
+
+ @keyframes text-focus-in {
+   0% {
+     -webkit-filter: blur(12px);
+     filter: blur(12px);
+     opacity: 0;
+   }
+
+   100% {
+     -webkit-filter: blur(0px);
+     filter: blur(0px);
+     opacity: 1;
+   }
+ }
+ 
+@keyframes moveup {
+  0% {
+      bottom: -25px;
+      opacity: 0;
+  }
+
+  100% {
+      bottom: 0;
+      opacity: 1;
+  }
+}
+
+@keyframes movedown {
+  0% {
+      top: -25px;
+      opacity: 0;
+  }
+
+  100% {
+      top: 0;
+      opacity: 1;
+  }
+}

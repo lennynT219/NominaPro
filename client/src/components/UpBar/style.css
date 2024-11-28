@@ -1,0 +1,41 @@
+.up-bar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 70px;
+    padding: 0 15px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    z-index: 100;
+}
+
+.profile-picture {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; 
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.itens-bar{
+    gap: 10px;
+}
+
+.name-user{
+    font-size: 16px;
+    color: var(--blue);
+}
+
+.up-bar svg:not(.ILogoCoop,.ISelloCoop){
+    height: 22px;
+    width: 22px;
+    color: var(--blue);
+}

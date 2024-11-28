@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+
+:root {
+  --light: #fff;
+  --blue: #0C5795;
+  --light-blue: #cfe8ff;
+  --grey: #eeeeee91;
+  --dark-grey: #aaaaaa;
+  --light-grey: #eeeeee;
+  --dark-blue: #033561;
+  --green: #008a2e;
+  --dark: #342e37;
+  --red: #dd1415;
+  --light-red: rgb(219, 20, 20, 0.38);
+  --yellow: #ffce26;
+  --light-yellow: #fff2c6;
+  --orange: #cc9a04;
+  --light-orange: #ffe0d3;
+}
+
+
+.letra-bold {
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.contenido-centrado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton-general {
+  padding: 5px 8px;
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.356)
+}
+
+.boton-general:hover {
+  background-color: var(--dark-blue);
+}
+
+.boton-guardar {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  height: 35px;
+  width: 100%;
+  z-index: 5;
+  gap: 15px;
+}
+
+.boton-general:disabled {
+  background-color: var(--grey);
+  color: var(--dark-grey);
+}
+
+.hover-button-container {
+  position: relative;
+}
+
+.hover-content {
+  padding-top: 5px;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+.div-hover {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.418);
+}
+
+.div-hover select {
+  width: 100px;
+  border-radius: 10px;
+  padding-left: 5px;
+  outline: none;
+  border: none;
+  height: 35px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, .1);
+  font-size: 13px;
+  color: #333;
+  background-color: white;
+}
+
+.errorMesange {
+  color: var(--red);
+  font-size: medium;
+}
+
+.filterVac {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 5px;
+}

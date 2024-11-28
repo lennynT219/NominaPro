@@ -1,0 +1,30 @@
+.table-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1010px;
+  gap: 15px;
+  overflow: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.table-form.activeNew {
+  flex-direction: row;
+  align-items: start
+}
+
+@media screen and (max-width: 1200px) {
+  .sidebar~.all-content .content .table-form.activeNew {
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .sidebar~.all-content .content .table-form {
+    align-items: center;
+    height: 100%;
+    max-width: 100%;
+  }
+}

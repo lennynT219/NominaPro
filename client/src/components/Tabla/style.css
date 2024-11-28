@@ -1,0 +1,108 @@
+.table {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  /* height: calc(100% - 50px); */
+  height: 100%;
+  overflow: auto;
+  padding: 0 5px;
+  z-index: 5;
+  min-height: 300px;
+}
+
+.table table {
+  border-collapse: collapse;
+}
+
+.table table th div,
+.table table tfoot div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  max-width: 250px;
+  min-height: 40px;
+  height: 35px;
+  margin: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.418);
+}
+
+.table table th div {
+  background-color: var(--blue);
+}
+
+.table table tfoot div {
+  background-color: var(--color);
+}
+
+.table table thead tr {
+  position: sticky;
+  top: 0;
+}
+
+tfoot tr {
+  position: sticky;
+  bottom: 0;
+}
+
+.table tfoot tr td .change-suma {
+  background-color: var(--red);
+}
+
+.table table tbody td {
+  font-size: .9rem;
+  padding: 16px 0;
+  text-align: center;
+
+  p {
+    min-height: 20px;
+  }
+}
+
+.table table tbody td p.trueStatus {
+  padding: 16px;
+  background-color: var(--light-red);
+  border-radius: 10px
+}
+
+.table table tbody td input {
+  width: 110px;
+  height: 25px;
+  text-align: center;
+  border-radius: 5px;
+  background: var(--light-yellow);
+  border: none;
+  font-size: .9rem;
+
+}
+
+.table table tbody tr:hover {
+  background-color: var(--grey);
+}
+
+.table table tbody tr.activeBag {
+  background-color: #a7c2d971;
+}
+
+.table div.td-hover {
+  position: relative;
+}
+
+.table div.td-hover:hover::before {
+  content: attr(hover);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--light-grey);
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.418);
+  z-index: 10;
+}

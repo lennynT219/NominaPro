@@ -1,0 +1,36 @@
+.contenido-interno-dashboard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    overflow: auto;
+}
+
+.table-form-100 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+}
+
+.table-form-100.activeNew {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+}
+
+@media (max-width: 1100px) {
+    .table-form-100.activeNew {
+        flex-direction: column;
+        align-items: center;
+    }
+}

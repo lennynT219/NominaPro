@@ -1,0 +1,188 @@
+.sidebar {
+  min-width: 260px;
+  width: 260px;
+  height: 100vh;
+  background-color: var(--light);
+  overflow-x: hidden;
+  transition: min-width .3s ease, width .3s ease;
+}
+
+.sidebar.hiden {
+  width: 60px;
+  min-width: 60px;
+}
+
+
+.sidebar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+}
+
+.sidebar.hiden .logo {
+  margin-left: 8px;
+}
+
+.sidebar .side-menu {
+  width: 100%;
+  margin-top: 40px;
+
+}
+
+.side-menu li.contenedor-li {
+  margin-bottom: 30px;
+}
+
+.side-menu p {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue);
+  margin: 0 0px 15px 19px;
+  white-space: nowrap;
+  -webkit-animation: text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+  animation: text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+}
+
+.sidebar.hiden .side-menu p {
+  color: transparent;
+  animation: none;
+  --webkit-animation: none;
+}
+
+.side-menu li:not(.contenedor-li, .li-desplegable),
+.side-menu li.li-desplegable>a:first-child {
+  height: 48px;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 15px 0 0 15px;
+  padding: 4px 10px 4px 4px;
+
+}
+
+.side-menu li:not(.contenedor-li, .li-desplegable) {
+  margin-left: 6px;
+}
+
+.side-menu li.li-desplegable {
+  margin-left: 6px;
+  transition: background-color .5s ease;
+}
+
+.side-menu li.active {
+  background-color: var(--grey);
+  position: relative;
+}
+
+.side-menu li.active:not(.li-desplegable) a {
+  color: var(--light);
+  background-color: var(--blue);
+}
+
+.side-menu li.active.li-desplegable {
+  background-color: var(--grey);
+  border-radius: 15px 0 0 15px;
+}
+
+.side-menu li.li-desplegable.active ul {
+  margin-left: 30px;
+  max-height: 150px;
+}
+
+.li-desplegable ul {
+  max-height: 0;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.side-menu li a:hover,
+.side-menu li.li-desplegable.active ul li:not(.active) a:hover,
+.side-menu li.li-desplegable.active ul li.active a {
+  color: var(--light);
+  background-color: var(--blue);
+}
+
+
+.side-menu li.li-desplegable.active ul li:not(.active) a {
+  background-color: var(--grey);
+}
+
+.side-menu li.active::before,
+.side-menu li.active::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  right: 0;
+  z-index: 1;
+
+}
+
+.side-menu li.active::before {
+  top: -40px;
+  box-shadow: 20px 20px 0 var(--grey);
+}
+
+.side-menu li.active::after {
+  bottom: -40px;
+  box-shadow: 20px -20px 0 var(--grey);
+}
+
+.side-menu li.li-desplegable a:hover {
+  border-radius: 15px;
+  color: var(--blue);
+  background-color: var(--grey);
+}
+
+.side-menu li a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--light);
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 15px;
+  color: var(--blue);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+.sidebar.hiden .side-menu li a:not(.li-desplegable) {
+  width: 40px;
+  transition: width .3s ease;
+}
+
+.side-menu li a svg {
+  color: var(--orange);
+  min-width: 20px;
+  height: 20px;
+  margin-left: 7px;
+  transition: min-width .3s ease, height .3s ease;
+}
+
+.sidebar.hiden .side-menu li a svg {
+  min-width: 25px;
+  height: 25px;
+}
+
+.side-menu li a span {
+  margin-left: 10px;
+}
+
+.li-desplegable a span+svg {
+  margin-left: 90px;
+  transition: transform .3s ease;
+}
+
+.li-desplegable.active a span+svg {
+  transform: rotate(90deg);
+}
+
+.sidebar.hiden~.all-content .content {
+  width: calc(100vw - 60px);
+}

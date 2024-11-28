@@ -1,0 +1,62 @@
+.modulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 416px;
+    height: 416px;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.circulo-modulos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 217px;
+    height: 217px;
+    border-radius: 50%;
+    background-color: var(--light);
+}
+
+h5{
+    background-color: var(--light);
+    border-radius: 10px;
+    padding:  10px 10px;
+    font-size: 35px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .modulo {
+        width: 325px;
+        height: 325px;
+    }
+
+    h5{
+        font-size: 28px;
+    }
+
+    .circulo-modulos{
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .modulo {
+        width: 250px;
+        height: 250px;
+    }
+
+    h5{
+        font-size: 20px;
+    }
+
+    .circulo-modulos{
+        width: 150px;
+        height: 150px;
+    }
+}
