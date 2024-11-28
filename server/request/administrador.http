@@ -1,0 +1,19 @@
+###
+
+# Obtener todos los usuarios
+GET http://localhost:4000/api/emp/user
+accept: application/json
+Authorization: Bearer {{TOKEN}}
+
+###
+
+# Crear un usuario
+POST http://localhost:4000/api/user
+Authorization: Bearer {{TOKEN}}
+
+{
+ "username":"admin",
+ "password":"010219"
+}
+
+###

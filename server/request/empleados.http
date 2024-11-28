@@ -1,0 +1,48 @@
+###
+
+#Ingresar un empleado
+POST http://localhost:4000/api/emp
+
+{
+  "ci_em": "1753518576",
+  "nom_em": "Tatiana Vasquez",
+  "apel_em": "Masapanta Vega",
+  "fecha_nace_em": "2003-05-06",
+  "dir_domicilio_em": "La vicentina",
+  "correo_em": "tvasquez@epn.edu.ec",
+  "celular_em": "0969779598",
+  "est_civil_em": "Soltera",
+  "genero_em": "M",
+  "cuenta_em": "25547",
+  "fecha_ing_em": "2024-01-06"
+}
+
+###
+
+#Ver todos los empleados
+GET http://localhost:4000/api/emp
+
+###
+
+#Ingresar muchos empleados
+POST http://localhost:4000/api/emp/many
+
+[
+  {
+    "ci_em": "1753518576",
+    "nom_em": "Tatiana Vasquez",
+    "apel_em": "Masapanta Vega",
+    "fecha_nace_em": "2003-05-06",
+    "dir_domicilio_em": "La vicentina",
+    "correo_em": "tvasquez@epn.edu.ec",
+    "celular_em": "0969779598",
+    "est_civil_em": "Soltera",
+    "genero_em": "M",
+    "cuenta_em": "25547",
+    "fecha_ing_em": "2024-01-06"
+    }
+]
+###
+
+#Dias de vacaciones de un empleado
+GET http://localhost:4000/api/emp/dias-vacaciones/1721080057

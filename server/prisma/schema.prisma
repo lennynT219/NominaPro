@@ -1,0 +1,292 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Area {
+  id_area     Int     @id @default(autoincrement())
+  nom_area    String   @db.VarChar(100)
+  descripcion String   @db.VarChar(150)
+  Cargos      Cargos[]
+}
+
+model CargoEmpleado {
+  id_cargo_emp  Int       @id @default(autoincrement())
+  ci_em         String   @db.VarChar(10)
+  id_cargo      Int
+  fecha_inicio  String   @db.VarChar(11)
+  fecha_fin     String?  @db.VarChar(11)
+  sueldo        Bytes
+  tipo_contrato Bytes
+  jornada       String   @db.VarChar(10)
+  estado_cargo  Boolean  @default(true)
+  Empleado      Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+  Cargos        Cargos   @relation(fields: [id_cargo], references: [id_cargo], onDelete: Cascade)
+
+  @@unique([ci_em, id_cargo, fecha_inicio])
+}
+
+model Cargos {
+  id_cargo      Int             @id @default(autoincrement())
+  id_area       Int
+  nom_cargo     String          @db.VarChar(100)
+  descripcion   String          @db.VarChar(200)
+  CargoEmpleado CargoEmpleado[]
+  Area          Area            @relation(fields: [id_area], references: [id_area], onDelete: Cascade)
+}
+
+model CargosFamiliares {
+  id_cargo   Int      @id @default(autoincrement())
+  ci_em      String   @db.VarChar(10)
+  nom_carga  String   @db.VarChar(30)
+  apel_cargo String   @db.VarChar(30)
+  parentesco String   @db.VarChar(30)
+  fecha_nace String   @db.VarChar(11)
+  Empleado   Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model Cursos {
+  id_cur      Int      @id @default(autoincrement())
+  ci_em       String   @db.VarChar(10)
+  nom_cur     String   @db.VarChar(50)
+  institucion String   @db.VarChar(50)
+  Empleado    Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model Empleado {
+  ci_em              String               @id @db.VarChar(10)
+  nom_em             String               @db.VarChar(30)
+  apel_em            String               @db.VarChar(30)
+  fecha_nace_em      String               @db.VarChar(11)
+  dir_domicilio_em   String               @db.VarChar(100)
+  correo_em          String               @db.VarChar(50)
+  celular_em         String               @db.VarChar(10)
+  telefono_em        String?              @db.VarChar(10)
+  est_civil_em       String               @db.VarChar(10)
+  genero_em          String               @db.VarChar(10)
+  cuenta_em          String               @db.VarChar(5)
+  fecha_ing_em       String               @db.VarChar(11)
+  CargoEmpleado      CargoEmpleado[]
+  CargosFamiliares   CargosFamiliares[]
+  Cursos             Cursos[]
+  ExperienciaLaboral ExperienciaLaboral[]
+  FormacionAcademica FormacionAcademica[]
+  LlamadosAtencion   LlamadosAtencion[]
+  RolesPago          RolesPago[]
+  Usuario            Usuario[]
+  Vacaciones         Vacaciones[]
+}
+
+model ExperienciaLaboral {
+  id_exp       Int      @id @default(autoincrement())
+  ci_em        String   @db.VarChar(10)
+  empresa      String   @db.VarChar(50)
+  cargo        String   @db.VarChar(50)
+  fecha_inicio String   @db.VarChar(11)
+  fecha_fin    String   @db.VarChar(11)
+  Empleado     Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model FormacionAcademica {
+  id_for      Int      @id @default(autoincrement())
+  ci_em       String   @db.VarChar(10)
+  titulo      String   @db.VarChar(50)
+  institucion String   @db.VarChar(80)
+  Empleado    Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model LlamadosAtencion {
+  id_atem    Int      @id @default(autoincrement())
+  ci_em      String   @db.VarChar(10)
+  fecha_aten String   @db.VarChar(11)
+  des_aten   String   @db.VarChar(150)
+  tipo_aten  String   @db.VarChar(20)
+  Empleado   Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model Permiso {
+  id_permiso     Int              @id @default(autoincrement())
+  nom_permiso    String           @db.VarChar(30)
+  descripcion    String           @db.VarChar(100)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime
+  PermisoUsuario PermisoUsuario[]
+  RolesPermiso   RolesPermiso[]
+}
+
+model PermisoUsuario {
+  id_permiso_usuario Int      @id @default(autoincrement())
+  id_permiso         Int
+  id_user            Int
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime
+  Permiso            Permiso  @relation(fields: [id_permiso], references: [id_permiso], onDelete: Cascade)
+  Usuario            Usuario  @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+}
+
+model Roles {
+  nom_roles     String          @id @db.VarChar(50)
+  descripcion   String          @db.VarChar(100)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now())
+  RolesPermiso  RolesPermiso[]
+  RolesUser     RolesUser[]
+  OpcionesRoles OpcionesRoles[]
+}
+
+model RolesPago {
+  id_rol         Int              @id @default(autoincrement())
+  ci_em          String           @db.VarChar(10)
+  fecha_pago     String           @db.VarChar(11)
+  total_ingresos Float            @default(0)
+  total_egresos  Float            @default(0)
+  mes_tercero    Boolean          @default(false)
+  mes_cuarto     Boolean          @default(false)
+  mes_fondo      Boolean          @default(false)
+  quincena       Boolean          @default(true)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Empleado       Empleado         @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+  DetalleIngreso DetalleIngreso[]
+  DetalleEgreso  DetalleEgreso[]
+}
+
+model RolesPermiso {
+  id_roles_permiso Int      @id @default(autoincrement())
+  nom_roles        String   @db.VarChar(50)
+  id_permiso       Int
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now())
+  Permiso          Permiso  @relation(fields: [id_permiso], references: [id_permiso], onDelete: Cascade)
+  Roles            Roles    @relation(fields: [nom_roles], references: [nom_roles], onDelete: Cascade)
+}
+
+model RolesUser {
+  id_roles_user Int       @id @default(autoincrement())
+  nom_roles     String    @db.VarChar(50)
+  id_user       Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  endAt         DateTime?
+  Roles         Roles     @relation(fields: [nom_roles], references: [nom_roles], onDelete: Cascade)
+  Usuario       Usuario   @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+
+  @@unique([id_user, nom_roles, endAt])
+}
+
+model Usuario {
+  id_user        Int              @id @default(autoincrement())
+  ci_em          String?          @db.VarChar(10)
+  username       String           @db.VarChar(30)
+  password       String           @db.VarChar(75)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @default(now())
+  img            String?          @db.VarChar(300)
+  img_id         String?          @db.VarChar(50)
+  PermisoUsuario PermisoUsuario[]
+  RolesUser      RolesUser[]
+  Empleado       Empleado?        @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model Vacaciones {
+  id_vac   Int      @id @default(autoincrement())
+  ci_em    String   @db.VarChar(10)
+  ini_vac  String   @db.VarChar(11)
+  fin_vac  String   @db.VarChar(11)
+  ini_vac_period  String?   @db.VarChar(11)
+  fin_vac_period  String?   @db.VarChar(11)
+
+  dias     Int
+  Empleado Empleado @relation(fields: [ci_em], references: [ci_em], onDelete: Cascade)
+}
+
+model Parametros {
+  id_param          Int                 @id @default(autoincrement())
+  nom_param         String              @db.VarChar(50)
+  ParametrosDetalle ParametrosDetalle[]
+}
+
+model ParametrosDetalle {
+  id_param_det  Int        @id @default(autoincrement())
+  id_param      Int
+  nom_param_det String     @db.VarChar(50)
+  icon          String     @db.VarChar(50)
+  valor         Float      @default(0)
+  Parametros    Parametros @relation(fields: [id_param], references: [id_param], onDelete: Cascade)
+}
+
+model Modulos {
+  label       String        @id @db.VarChar(50)
+  icon        String        @db.VarChar(50)
+  url         String        @db.VarChar(50)
+  SecionModul SecionModul[]
+}
+
+model SecionModul {
+  labelModul      String            @db.VarChar(50)
+  label           String            @id @db.VarChar(50)
+  Modulos         Modulos           @relation(fields: [labelModul], references: [label], onDelete: Cascade)
+  OpcionesSection OpcionesSection[]
+}
+
+model OpcionesSection {
+  id_opc        String          @id @db.VarChar(6)
+  labelSecion   String          @db.VarChar(50)
+  label         String          @db.VarChar(50)
+  icon          String          @db.VarChar(50)
+  url           String          @db.VarChar(50)
+  component     String          @db.VarChar(50)
+  SecionModul   SecionModul     @relation(fields: [labelSecion], references: [label], onDelete: Cascade)
+  OpcionesRoles OpcionesRoles[]
+}
+
+model OpcionesRoles {
+  id_op_rol       Int             @id @default(autoincrement())
+  id_opc          String          @db.VarChar(6)
+  nom_roles       String          @db.VarChar(50)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @default(now())
+  OpcionesSection OpcionesSection @relation(fields: [id_opc], references: [id_opc], onDelete: Cascade)
+  Roles           Roles           @relation(fields: [nom_roles], references: [nom_roles], onDelete: Cascade)
+}
+
+model DetalleIngreso {
+  id_det_ingr Int       @id @default(autoincrement())
+  monto       Bytes
+  id_rol      Int
+  id_ingr     Int
+  RolesPago   RolesPago @relation(fields: [id_rol], references: [id_rol], onDelete: Cascade)
+  Ingreso     Ingreso   @relation(fields: [id_ingr], references: [id_ingr], onDelete: Cascade)
+
+  @@unique([id_rol, id_ingr])
+}
+
+model Ingreso {
+  id_ingr        Int              @id @default(autoincrement())
+  nom_tipo_ingr  String           @db.VarChar(50)
+  es_defecto     Boolean          @default(false)
+  ing_grabado    Boolean          @default(true)
+  DetalleIngreso DetalleIngreso[]
+}
+
+model DetalleEgreso {
+  id_det_egrs Int       @id @default(autoincrement())
+  monto       Bytes
+  id_rol      Int
+  id_egrs     Int
+  RolesPago   RolesPago @relation(fields: [id_rol], references: [id_rol], onDelete: Cascade)
+  Egreso      Egreso    @relation(fields: [id_egrs], references: [id_egrs], onDelete: Cascade)
+
+  @@unique([id_rol, id_egrs])
+}
+
+model Egreso {
+  id_egrs       Int             @id @default(autoincrement())
+  nom_tipo_egrs String          @db.VarChar(50)
+  es_defecto    Boolean         @default(false)
+  DetalleEgreso DetalleEgreso[]
+}
